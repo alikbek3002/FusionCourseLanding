@@ -20,4 +20,4 @@ export const scaleIn: Variants = {
   visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 260, damping: 20 } },
 };
 
-export const viewportOnce = { once: true, margin: "-15%" } as const;
+export const viewportOnce = { once: true, amount: 0.1 } as const;
