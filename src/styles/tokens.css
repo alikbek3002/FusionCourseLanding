@@ -1,0 +1,182 @@
+/* ==========================================================================
+   Fusion AI — Colors & Type
+   Source of truth: fusion-main/assets/css/main.css + Figma UI/Colors + Typography
+   ========================================================================== */
+
+/* Google Fonts — Onest (primary) + Poppins (display headings) */
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ----------------------------------------------------------------------
+     BRAND — Purple is Fusion's primary. Sampled from Figma & codebase.
+     Core brand: #6739FF (rgb 103,57,255). Logo uses a gradient stop set
+     from #2200FF → #7300FF → #B100FF → #C400FF.
+  ---------------------------------------------------------------------- */
+  --brand-500: #6739FF;            /* primary */
+  --brand-400: #735FFA;            /* active/border */
+  --brand-300: #9A5FFA;            /* gradient top */
+  --brand-600: #6966EF;            /* gradient bottom */
+  --brand-50:  #EEE9FF;            /* tint surface */
+  --brand-100: #D9CEFF;
+  --brand-gradient: linear-gradient(180deg, #9A5FFA 0%, #6966EF 100%);
+  --brand-gradient-deep: linear-gradient(190deg, #2200FF -69.35%, #7300FF 15.33%, #B100FF 80%, #C400FF 100%);
+  --brand-gradient-radial: radial-gradient(69.75% 193.22% at 54.76% 50%, #9A5FFA 0%, #6966EF 100%);
+
+  /* ----------------------------------------------------------------------
+     FOREGROUND — text & icons
+  ---------------------------------------------------------------------- */
+  --fg-1: #101114;                 /* primary text */
+  --fg-2: #181B1F;                 /* near-black (body, headings in dark) */
+  --fg-3: #393E44;                 /* tertiary */
+  --fg-muted: #7C878E;             /* secondary/placeholder */
+  --fg-soft: #80878B;
+  --fg-inverse: #FCFDFE;           /* on dark / brand fills */
+  --fg-on-brand: #FFFFFF;
+
+  /* ----------------------------------------------------------------------
+     SURFACE — backgrounds & fills
+  ---------------------------------------------------------------------- */
+  --surface-0: #FFFFFF;            /* page / card */
+  --surface-1: #FCFDFE;            /* soft white */
+  --surface-2: #F1F5F9;            /* muted fill (agent cards, chips) */
+  --surface-3: #EEEEF2;            /* divider fill */
+  --surface-4: #E3E9EE;            /* quiet */
+  --surface-hover: #EDEAFF;        /* lavender hover (cards) */
+  --surface-dark: #141718;         /* sidebar */
+  --surface-dark-2: #181B1F;       /* dark button */
+  --surface-dark-3: #232627;       /* recommended card */
+  --surface-dark-4: #0E0C15;       /* deep near-black used in landing */
+
+  /* ----------------------------------------------------------------------
+     BORDER
+  ---------------------------------------------------------------------- */
+  --border-1: #D4DADF;
+  --border-2: #E3E9EE;
+  --border-soft: #EEEEF2;
+
+  /* ----------------------------------------------------------------------
+     SEMANTIC / PALETTE — from Figma UI/Colors
+  ---------------------------------------------------------------------- */
+  --blue:    #3B74DF;               /* also 1F82FF (code) */
+  --blue-2:  #1F82FF;
+  --success: #4BAB71;               /* green */
+  --pink:    #D18BE3;               /* also FF97E8 (recommended tag) */
+  --pink-2:  #FF97E8;
+  --danger:  #FF4F42;
+  --warning: #FDCD44;
+  --neutral: #C6C8C7;
+  --success-alt: #3FDD78;           /* recommended title on dark cards */
+
+  /* ----------------------------------------------------------------------
+     RADIUS  —  Figma scale
+  ---------------------------------------------------------------------- */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+  --radius-4xl: 40px;
+  --radius-full: 999px;
+
+  /* ----------------------------------------------------------------------
+     SPACING  —  Figma scale (2..136)
+  ---------------------------------------------------------------------- */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 8px;
+  --space-4: 12px;
+  --space-5: 14px;
+  --space-6: 16px;
+  --space-7: 18px;
+  --space-8: 24px;
+  --space-9: 32px;
+  --space-10: 40px;
+  --space-11: 48px;
+  --space-12: 56px;
+  --space-13: 64px;
+  --space-14: 96px;
+  --space-15: 136px;
+
+  /* ----------------------------------------------------------------------
+     SHADOW  —  card shadows observed across Dashboard (agent cards, plans)
+  ---------------------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(16,17,20,0.04);
+  --shadow-sm: 0 2px 8px rgba(16,17,20,0.06);
+  --shadow-md: 0 8px 24px rgba(16,17,20,0.08);
+  --shadow-lg: 0 12px 32px rgba(16,17,20,0.10);
+  --shadow-xl: 0 24px 48px rgba(16,17,20,0.14);
+  --shadow-brand: 0 16px 40px rgba(103,57,255,0.24);
+
+  /* ----------------------------------------------------------------------
+     LAYOUT
+  ---------------------------------------------------------------------- */
+  --header-h: 80px;
+  --sidebar-w: 320px;
+  --sidebar-w-collapsed: 96px;
+
+  /* ----------------------------------------------------------------------
+     TYPE FAMILIES
+     Onest is the Fusion UI + display face. Poppins is a secondary display
+     face loaded by Nuxt; Inter appears only in external/borrowed frames.
+  ---------------------------------------------------------------------- */
+  --font-sans: 'Onest', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Onest', 'Poppins', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
+
+  /* ----------------------------------------------------------------------
+     TYPE SCALE  —  Semantic tokens
+     Display sizes tuned to landing hero (up to 64/72). UI scale follows
+     Figma: h4=32/40, base-1=16/24 m, base-2=14/24 sb.
+  ---------------------------------------------------------------------- */
+  --fs-display-xl: 64px;   --lh-display-xl: 72px;  --fw-display-xl: 600; --ls-display-xl: -0.01em;
+  --fs-display-lg: 48px;   --lh-display-lg: 56px;  --fw-display-lg: 700; --ls-display-lg: -0.02em;
+  --fs-h1: 40px;           --lh-h1: 48px;          --fw-h1: 700;        --ls-h1: -0.02em;
+  --fs-h2: 32px;           --lh-h2: 40px;          --fw-h2: 700;        --ls-h2: -0.01em;
+  --fs-h3: 24px;           --lh-h3: 32px;          --fw-h3: 600;        --ls-h3: -0.01em;
+  --fs-h4: 20px;           --lh-h4: 28px;          --fw-h4: 600;
+  --fs-lead: 20px;         --lh-lead: 28px;        --fw-lead: 400;
+  --fs-body-lg: 18px;      --lh-body-lg: 28px;     --fw-body-lg: 400;
+  --fs-body: 16px;         --lh-body: 24px;        --fw-body: 500;      /* base-1 */
+  --fs-body-sm: 14px;      --lh-body-sm: 24px;     --fw-body-sm: 600;   /* base-2 SB */
+  --fs-caption: 12px;      --lh-caption: 16px;     --fw-caption: 500;
+  --fs-micro: 10px;        --lh-micro: 14px;       --fw-micro: 500;
+}
+
+/* =================  Element defaults  ================================ */
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  color: var(--fg-1);
+  background: var(--surface-0);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, .h1 { font-family: var(--font-display); font-size: var(--fs-h1); line-height: var(--lh-h1); font-weight: var(--fw-h1); letter-spacing: var(--ls-h1); color: var(--fg-1); margin: 0; }
+h2, .h2 { font-family: var(--font-display); font-size: var(--fs-h2); line-height: var(--lh-h2); font-weight: var(--fw-h2); letter-spacing: var(--ls-h2); color: var(--fg-1); margin: 0; }
+h3, .h3 { font-size: var(--fs-h3); line-height: var(--lh-h3); font-weight: var(--fw-h3); letter-spacing: var(--ls-h3); color: var(--fg-1); margin: 0; }
+h4, .h4 { font-size: var(--fs-h4); line-height: var(--lh-h4); font-weight: var(--fw-h4); color: var(--fg-1); margin: 0; }
+p, .body { font-size: var(--fs-body); line-height: var(--lh-body); font-weight: 400; color: var(--fg-1); margin: 0; }
+.lead { font-size: var(--fs-lead); line-height: var(--lh-lead); color: var(--fg-2); }
+small, .caption { font-size: var(--fs-caption); line-height: var(--lh-caption); color: var(--fg-muted); }
+code, kbd, samp { font-family: var(--font-mono); }
+
+.display-xl { font-size: var(--fs-display-xl); line-height: var(--lh-display-xl); font-weight: var(--fw-display-xl); letter-spacing: var(--ls-display-xl); }
+.display-lg { font-size: var(--fs-display-lg); line-height: var(--lh-display-lg); font-weight: var(--fw-display-lg); letter-spacing: var(--ls-display-lg); }
+
+.text-gradient {
+  background: var(--brand-gradient-deep);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.bg-brand-gradient { background: var(--brand-gradient); color: var(--fg-on-brand); }
+.bg-brand-gradient-deep { background: var(--brand-gradient-deep); color: var(--fg-on-brand); }
+
+/* Dotted pattern used on landing steps backgrounds */
+.bg-dots {
+  background-image: radial-gradient(circle, #E9E9E9 1px, transparent 1px);
+  background-size: 15px 15px;
+}
