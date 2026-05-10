@@ -27,28 +27,26 @@ function Item({
   const seg = 1 / total;
   const start = i * seg;
   const peak = start + seg * 0.5;
-  const end = start + seg;
-  const opacity = useTransform(progress, [start, peak, end], [0.15, 1, 0.4]);
-  const scale = useTransform(progress, [start, peak, end], [0.9, 1, 0.96]);
-  const x = useTransform(progress, [start, peak], [-30, 0]);
+  // Stay fully visible after appearing — no fade-out, no scale jitter
+  const opacity = useTransform(progress, [start, peak], [0, 1]);
+  const y = useTransform(progress, [start, peak], [16, 0]);
 
   return (
     <motion.div
-      style={{ opacity, scale, x }}
-      className="flex items-center gap-5 md:gap-7"
+      style={{ opacity, y }}
+      className="flex items-center gap-4 pl-2 md:gap-6 md:pl-0"
     >
-      <motion.span
-        className="text-5xl md:text-7xl"
-        animate={{ rotate: [0, -8, 8, 0] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
+      <span
+        className="shrink-0 text-4xl md:text-6xl"
+        style={{ width: "1.4em", textAlign: "center" }}
       >
         {emoji}
-      </motion.span>
+      </span>
       <span
-        className="text-on-dark"
         style={{
+          color: "#fff",
           fontFamily: "var(--font-display)",
-          fontSize: "clamp(22px, 3.5vw, 44px)",
+          fontSize: "clamp(20px, 3.2vw, 40px)",
           fontWeight: 600,
           lineHeight: 1.15,
           letterSpacing: "-0.02em",
