@@ -1,35 +1,36 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Header } from "@/components/landing/Header";
-import { Footer } from "@/components/landing/Footer";
-import { ScrollProgress } from "@/components/landing/ScrollProgress";
-import { LogoMarquee } from "@/components/landing/LogoMarquee";
-import { ManifestoScroll } from "@/components/landing/ManifestoScroll";
-import { StickyChapter } from "@/components/landing/StickyChapter";
-import { Hero } from "@/components/sections/Hero";
-import { ForWhom } from "@/components/sections/ForWhom";
-import { Practice } from "@/components/sections/Practice";
-import { Outcomes } from "@/components/sections/Outcomes";
-import { Author } from "@/components/sections/Author";
-import { FinalCTA } from "@/components/sections/FinalCTA";
-import { FullProgram } from "@/components/sections/FullProgram";
-import { chapters } from "@/data/chapters";
+import "@/v2/v2.css";
+import { Aurora, ProgressBar } from "@/v2/components/primitives";
+import { Nav } from "@/v2/components/Nav";
+import {
+  Author,
+  FinalCTA,
+  Footer,
+  Format,
+  Hero,
+  Marquee,
+  Outcomes,
+  Pain,
+  Program,
+  WhyNow,
+} from "@/v2/sections/Sections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ИИнутый — курс по ИИ от Fusion AI · Технопарк, Бишкек" },
+      { title: "ИИнутый — офлайн-курс по ИИ от Fusion AI · Бишкек" },
       {
         name: "description",
         content:
-          "Офлайн-курс по ИИ от @zholdoshev.ramis. 14 уроков: промпты, ИИ-агенты, контент с ИИ, вайбкодинг. Технопарк, Бишкек.",
+          "Офлайн-курс по ИИ «ИИнутый» от Fusion AI. 14 уроков, 4 недели, Технопарк Бишкек. Реальный код, реальные задачи, без воды.",
       },
       { property: "og:title", content: "ИИнутый — курс по ИИ от Fusion AI" },
       {
         property: "og:description",
-        content: "Пока нормальные люди боятся ИИ — ИИнутые на нём зарабатывают. 14 уроков офлайн в Бишкеке.",
+        content:
+          "Офлайн-курс по ИИ «ИИнутый» от Fusion AI. 14 уроков, 4 недели, Технопарк Бишкек.",
       },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Landing,
@@ -37,30 +38,23 @@ export const Route = createFileRoute("/")({
 
 function Landing() {
   return (
-    <div style={{ background: "var(--surface-dark-4)", color: "var(--fg-inverse)" }}>
-      <ScrollProgress />
-      <Header />
+    <div className="v2-page">
+      <Aurora />
+      <ProgressBar />
+      <Nav />
       <main>
         <Hero />
-        <ManifestoScroll />
-        <div id="program">
-          {chapters.map((ch, i) => (
-            <div key={ch.id}>
-              <StickyChapter chapter={ch} index={i} />
-              <div className="px-5 py-10 md:px-6 md:py-14">
-                <LogoMarquee ids={ch.tools} speed={28 + i * 4} />
-              </div>
-            </div>
-          ))}
-        </div>
-        <Practice />
-        <FullProgram />
-        <ForWhom />
+        <Marquee />
+        <Pain />
+        <WhyNow />
+        <Program />
         <Outcomes />
         <Author />
+        <Format />
         <FinalCTA />
       </main>
       <Footer />
+      <div className="noise" />
     </div>
   );
 }

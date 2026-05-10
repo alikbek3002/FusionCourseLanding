@@ -30,3 +30,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Playwright MCP artifacts (browser snapshots, console logs)
+.playwright-mcp/
+
+# Local screenshots / scratch images
+gap-*.png
