@@ -9,7 +9,7 @@ export function SectionPill({ children, tone = "brand", className = "" }: Props)
       : { background: "rgba(255,255,255,0.06)", color: "var(--fg-inverse)", border: "1px solid rgba(255,255,255,0.18)" };
   return (
     <span
-      className={`inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider ${className}`}
+      className={`mt-8 md:mt-10 max-w-xl text-on-dark-muted my-[20px] ${className}`}
       style={styles}
     >
       {children}
