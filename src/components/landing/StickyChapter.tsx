@@ -22,13 +22,13 @@ function OutcomeRow({
   const opacity = useTransform(progress, stops, [0.35, 1, 1, 0.55]);
   const x = useTransform(progress, [start, Math.min(1, start + 0.1)], [-20, 0]);
   return (
-    <motion.li style={{ opacity, x }} className="flex items-start gap-4">
-      <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full" style={{ background: accent }}>
+    <motion.li style={{ opacity, x }} className="flex items-start gap-4 pl-1">
+      <span className="mt-1 ml-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full" style={{ background: accent }}>
         <Check size={14} color="white" strokeWidth={3} />
       </span>
       <div>
-        <div className="text-on-dark" style={{ fontSize: 19, fontWeight: 600, lineHeight: 1.3 }}>{title}</div>
-        <div className="text-on-dark-muted" style={{ fontSize: 15, lineHeight: 1.5 }}>{desc}</div>
+        <div style={{ color: "#fff", fontSize: 18, fontWeight: 600, lineHeight: 1.3 }}>{title}</div>
+        <div style={{ color: "rgba(255,255,255,0.72)", fontSize: 14, lineHeight: 1.5 }}>{desc}</div>
       </div>
     </motion.li>
   );
