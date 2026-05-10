@@ -59,6 +59,7 @@ export function Hero() {
             fontSize: "clamp(56px, 12vw, 128px)",
             lineHeight: 1.02,
             letterSpacing: "-0.03em",
+            textShadow: "0 2px 40px rgba(0,0,0,0.55), 0 0 80px rgba(0,0,0,0.35)",
           }}
         >
           <span aria-label={title}>
