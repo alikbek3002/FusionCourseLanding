@@ -1,14 +1,12 @@
 import { config } from "@/config";
+import fusionMain from "@/assets/brand/fusion-main.png";
 
 export function Footer() {
   return (
     <footer className="mt-16" style={{ background: "#000" }}>
       <div className="mx-auto max-w-[1200px] px-5 py-10 md:px-6">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-          <div className="flex items-center gap-2 font-semibold">
-            <span className="inline-block h-6 w-6 rounded-md" style={{ background: "var(--brand-gradient-deep)" }} />
-            <span>Fusion AI</span>
-          </div>
+          <img src={fusionMain} alt="Fusion AI" className="h-12 w-auto rounded-lg" />
           <div className="text-sm text-on-dark-muted">
             <a href={config.TELEGRAM_URL} target="_blank" rel="noopener noreferrer" className="hover:text-white">{config.TELEGRAM_HANDLE}</a>
             <span className="px-2 opacity-50">·</span>
