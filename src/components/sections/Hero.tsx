@@ -138,7 +138,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.7 }}
-            className="mt-8 md:mt-10 font-bold text-on-dark"
+            className="mt-12 md:mt-16 font-bold text-on-dark"
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(48px, 8.5vw, 104px)",
@@ -152,7 +152,7 @@ export function Hero() {
           </motion.h1>
 
           <p
-            className="mt-6 max-w-xl text-on-dark-muted"
+            className="mt-8 md:mt-10 max-w-xl text-on-dark-muted"
             style={{ fontSize: "clamp(16px, 1.6vw, 20px)", lineHeight: 1.5 }}
           >
             14 уроков с @zholdoshev.ramis. Промпты, ИИ-агенты, контент и вайбкодинг.

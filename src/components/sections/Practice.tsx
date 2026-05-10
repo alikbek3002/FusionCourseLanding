@@ -20,12 +20,17 @@ export function Practice() {
           style={{ background: "radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%)", filter: "blur(60px)" }}
         />
         <motion.div variants={fadeInUp}>
-          <SectionPill tone="success">ПРАКТИКА</SectionPill>
+          <span
+            className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider"
+            style={{ background: "#3FDD78", color: "#0B1A12" }}
+          >
+            ПРАКТИКА
+          </span>
         </motion.div>
         <motion.h2
           variants={fadeInUp}
-          className="mt-5 text-white"
-          style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}
+          className="mt-5"
+          style={{ color: "#fff", fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}
         >
           Финал — это не теория.
         </motion.h2>
@@ -38,9 +43,9 @@ export function Practice() {
               className="rounded-[20px] p-6 md:p-8"
               style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.16)", backdropFilter: "blur(10px)" }}
             >
-              <div className="text-2xl font-bold text-white/90">{l.num}.</div>
-              <h4 className="mt-3 text-white" style={{ fontSize: 22, fontWeight: 600 }}>{l.title}</h4>
-              <p className="mt-2 text-white/75" style={{ fontSize: 15, lineHeight: 1.55 }}>{l.desc}</p>
+              <div className="text-2xl font-bold" style={{ color: "rgba(255,255,255,0.92)" }}>{l.num}.</div>
+              <h4 className="mt-3" style={{ color: "#fff", fontSize: 22, fontWeight: 600 }}>{l.title}</h4>
+              <p className="mt-2" style={{ color: "rgba(255,255,255,0.82)", fontSize: 15, lineHeight: 1.55 }}>{l.desc}</p>
             </motion.div>
           ))}
         </div>
