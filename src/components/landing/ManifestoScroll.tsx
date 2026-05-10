@@ -6,6 +6,8 @@ const phrases = [
   "ИИнутые на нём зарабатывают.",
   "Один человек = команда из пяти.",
   "Твой ИИ-сотрудник работает 24/7.",
+  "Контент пишется сам. Лендинг собирается за вечер.",
+  "Через 14 уроков ты — другой человек.",
 ];
 
 function Phrase({ p, i, total, progress }: { p: string; i: number; total: number; progress: MotionValue<number> }) {
