@@ -108,7 +108,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen items-center overflow-hidden px-5 pb-16 pt-28 md:px-6 md:pt-32"
+      className="relative flex min-h-screen items-center overflow-hidden px-5 pb-16 pt-36 md:px-6 md:pt-40"
       style={{ background: "#05010F" }}
     >
       <BokehOrb size={620} className="-left-40 top-10" intensity={0.55} duration={11} />
