@@ -43,7 +43,6 @@ function Landing() {
       <main>
         <Hero />
         <ManifestoScroll />
-        <ForWhom />
         <div id="program">
           {chapters.map((ch, i) => (
             <div key={ch.id}>
@@ -56,6 +55,7 @@ function Landing() {
         </div>
         <Practice />
         <FullProgram />
+        <ForWhom />
         <Outcomes />
         <Author />
         <FinalCTA />
