@@ -5,7 +5,7 @@ export function SectionPill({ children, tone = "brand", className = "" }: Props)
     tone === "brand"
       ? { background: "var(--brand-500)", color: "var(--fg-on-brand)" }
       : tone === "success"
-      ? { background: "var(--success-alt)", color: "var(--surface-dark-4)" }
+      ? { background: "rgba(63,221,120,0.16)", color: "var(--success-alt)", border: "1px solid rgba(63,221,120,0.4)" }
       : { background: "rgba(255,255,255,0.06)", color: "var(--fg-inverse)", border: "1px solid rgba(255,255,255,0.18)" };
   return (
     <span

@@ -4,6 +4,7 @@ import { BokehOrb } from "@/components/landing/BokehOrb";
 import { SectionPill } from "@/components/landing/SectionPill";
 import { fadeInUp, stagger, viewportOnce } from "@/lib/motion";
 import { config } from "@/config";
+import ramisAvatar from "@/assets/ramis.png";
 
 export function Author() {
   return (
@@ -22,17 +23,12 @@ export function Author() {
               className="absolute inset-0 rounded-full blur-2xl"
               style={{ background: "var(--brand-gradient)", opacity: 0.5 }}
             />
-            <div
-              className="relative flex h-full w-full items-center justify-center rounded-full"
-              style={{
-                background: "var(--brand-gradient-radial)",
-                border: "1px solid rgba(255,255,255,0.18)",
-              }}
-            >
-              <span className="text-white" style={{ fontSize: 96, fontWeight: 700, letterSpacing: "-0.04em" }}>
-                РЖ
-              </span>
-            </div>
+            <img
+              src={ramisAvatar}
+              alt="Рамис Жолдошев"
+              className="relative h-full w-full rounded-full object-cover"
+              style={{ border: "1px solid rgba(255,255,255,0.18)" }}
+            />
           </div>
         </motion.div>
 
