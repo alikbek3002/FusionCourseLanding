@@ -12,8 +12,11 @@ function diff(target: number) {
 
 export function Countdown({ to }: { to: string }) {
   const target = new Date(to).getTime();
+  const [mounted, setMounted] = useState(false);
   const [t, setT] = useState(() => diff(target));
   useEffect(() => {
+    setMounted(true);
+    setT(diff(target));
     const id = setInterval(() => setT(diff(target)), 1000);
     return () => clearInterval(id);
   }, [target]);
@@ -46,7 +49,7 @@ export function Countdown({ to }: { to: string }) {
               letterSpacing: "-0.02em",
             }}
           >
-            {String(c.v).padStart(2, "0")}
+            {mounted ? String(c.v).padStart(2, "0") : "--"}
           </div>
           <div className="mt-1 text-[10px] uppercase tracking-widest text-on-dark-muted sm:text-xs">{c.l}</div>
         </div>
