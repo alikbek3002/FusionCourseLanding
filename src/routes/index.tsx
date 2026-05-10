@@ -2,14 +2,17 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/landing/Header";
 import { Footer } from "@/components/landing/Footer";
 import { ScrollProgress } from "@/components/landing/ScrollProgress";
+import { LogoMarquee } from "@/components/landing/LogoMarquee";
+import { ManifestoScroll } from "@/components/landing/ManifestoScroll";
+import { StickyChapter } from "@/components/landing/StickyChapter";
 import { Hero } from "@/components/sections/Hero";
 import { ForWhom } from "@/components/sections/ForWhom";
-import { ProgramBlock } from "@/components/sections/ProgramBlock";
 import { Practice } from "@/components/sections/Practice";
 import { Outcomes } from "@/components/sections/Outcomes";
 import { Author } from "@/components/sections/Author";
 import { FinalCTA } from "@/components/sections/FinalCTA";
-import { block1, block2, block3 } from "@/data/lessons";
+import { FullProgram } from "@/components/sections/FullProgram";
+import { chapters } from "@/data/chapters";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,32 +42,20 @@ function Landing() {
       <Header />
       <main>
         <Hero />
+        <ManifestoScroll />
         <ForWhom />
         <div id="program">
-          <ProgramBlock
-            blockNum="01"
-            pillLabel="БЛОК 1"
-            title="Мозг прокачан."
-            lead="С первого урока перестаёшь писать «переформулируй» и начинаешь получать то, что нужно."
-            lessons={block1}
-          />
-          <ProgramBlock
-            blockNum="02"
-            pillLabel="БЛОК 2"
-            title="ИИ-контент."
-            lead="Производишь больше контента, чем команда из пяти человек. На одном ноутбуке."
-            lessons={block2}
-            mirror
-          />
-          <ProgramBlock
-            blockNum="03"
-            pillLabel="БЛОК 3"
-            title="Вайбкодинг."
-            lead="Программируешь, не зная программирования. Просто разговариваешь с кодом."
-            lessons={block3}
-          />
+          {chapters.map((ch, i) => (
+            <div key={ch.id}>
+              <StickyChapter chapter={ch} index={i} />
+              <div className="px-5 py-10 md:px-6 md:py-14">
+                <LogoMarquee ids={ch.tools} speed={28 + i * 4} />
+              </div>
+            </div>
+          ))}
         </div>
         <Practice />
+        <FullProgram />
         <Outcomes />
         <Author />
         <FinalCTA />
