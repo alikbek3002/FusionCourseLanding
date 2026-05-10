@@ -138,7 +138,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.7 }}
-            className="mt-6 font-bold text-on-dark"
+            className="mt-8 md:mt-10 font-bold text-on-dark"
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(48px, 8.5vw, 104px)",
