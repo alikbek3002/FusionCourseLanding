@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { useRef } from "react";
 
 const phrases = [
@@ -8,6 +8,38 @@ const phrases = [
   "Твой ИИ-сотрудник работает 24/7.",
 ];
 
+function Phrase({ p, i, total, progress }: { p: string; i: number; total: number; progress: MotionValue<number> }) {
+  const start = i / total;
+  const end = (i + 1) / total;
+  const mid = (start + end) / 2;
+  const opacity = useTransform(progress, [start, mid - 0.04, mid + 0.04, end], [0, 1, 1, 0]);
+  const y = useTransform(progress, [start, end], [40, -40]);
+  return (
+    <motion.h2
+      style={{ opacity, y }}
+      className="absolute inset-0 m-auto flex items-center justify-center text-on-dark"
+    >
+      <span
+        style={{
+          fontFamily: "var(--font-display)",
+          fontSize: "clamp(36px, 7vw, 96px)",
+          fontWeight: 700,
+          letterSpacing: "-0.03em",
+          lineHeight: 1.05,
+          background: i % 2 === 1
+            ? "var(--brand-gradient)"
+            : "linear-gradient(180deg,#fff,rgba(255,255,255,0.7))",
+          WebkitBackgroundClip: "text",
+          backgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}
+      >
+        {p}
+      </span>
+    </motion.h2>
+  );
+}
+
 export function ManifestoScroll() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
@@ -16,42 +48,9 @@ export function ManifestoScroll() {
     <section ref={ref} className="relative" style={{ height: `${phrases.length * 100}vh` }}>
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden px-5">
         <div className="relative mx-auto w-full max-w-5xl text-center">
-          {phrases.map((p, i) => {
-            const start = i / phrases.length;
-            const end = (i + 1) / phrases.length;
-            const mid = (start + end) / 2;
-            const opacity = useTransform(
-              scrollYProgress,
-              [start, mid - 0.04, mid + 0.04, end],
-              [0, 1, 1, 0],
-            );
-            const y = useTransform(scrollYProgress, [start, end], [40, -40]);
-            return (
-              <motion.h2
-                key={i}
-                style={{ opacity, y }}
-                className="absolute inset-0 m-auto flex items-center justify-center text-on-dark"
-              >
-                <span
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontSize: "clamp(36px, 7vw, 96px)",
-                    fontWeight: 700,
-                    letterSpacing: "-0.03em",
-                    lineHeight: 1.05,
-                    background: i % 2 === 1
-                      ? "var(--brand-gradient)"
-                      : "linear-gradient(180deg,#fff,rgba(255,255,255,0.7))",
-                    WebkitBackgroundClip: "text",
-                    backgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
-                  {p}
-                </span>
-              </motion.h2>
-            );
-          })}
+          {phrases.map((p, i) => (
+            <Phrase key={i} p={p} i={i} total={phrases.length} progress={scrollYProgress} />
+          ))}
         </div>
         <div
           aria-hidden

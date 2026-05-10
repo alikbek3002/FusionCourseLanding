@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { useRef } from "react";
 import { Check } from "lucide-react";
 import { LogoChip } from "./LogoChip";
@@ -6,6 +6,30 @@ import { StorySlot } from "./StorySlot";
 import type { Chapter } from "@/data/chapters";
 
 type Props = { chapter: Chapter; index: number };
+
+function OutcomeRow({
+  i, total, progress, accent, title, desc,
+}: { i: number; total: number; progress: MotionValue<number>; accent: string; title: string; desc: string }) {
+  const start = i / total;
+  const end = (i + 1) / total;
+  const opacity = useTransform(
+    progress,
+    [Math.max(0, start - 0.05), start + 0.05, end + 0.1, Math.min(1, end + 0.3)],
+    [0.35, 1, 1, 0.55],
+  );
+  const x = useTransform(progress, [start, start + 0.1], [-20, 0]);
+  return (
+    <motion.li style={{ opacity, x }} className="flex items-start gap-4">
+      <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full" style={{ background: accent }}>
+        <Check size={14} color="white" strokeWidth={3} />
+      </span>
+      <div>
+        <div className="text-on-dark" style={{ fontSize: 19, fontWeight: 600, lineHeight: 1.3 }}>{title}</div>
+        <div className="text-on-dark-muted" style={{ fontSize: 15, lineHeight: 1.5 }}>{desc}</div>
+      </div>
+    </motion.li>
+  );
+}
 
 export function StickyChapter({ chapter, index }: Props) {
   const ref = useRef<HTMLDivElement>(null);
@@ -16,6 +40,7 @@ export function StickyChapter({ chapter, index }: Props) {
   const y2 = useTransform(scrollYProgress, [0, 1], [200, -60]);
   const y3 = useTransform(scrollYProgress, [0, 1], [320, 0]);
   const ys = [y1, y2, y3];
+  const glowOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.2, 0.7, 0.2]);
 
   // Outcomes opacity steps based on scroll progress
   const totalOutcomes = chapter.outcomes.length;
@@ -36,7 +61,7 @@ export function StickyChapter({ chapter, index }: Props) {
         style={{
           background: `radial-gradient(circle, ${chapter.accent}55 0%, transparent 65%)`,
           filter: "blur(80px)",
-          opacity: useTransform(scrollYProgress, [0, 0.5, 1], [0.2, 0.7, 0.2]),
+          opacity: glowOpacity,
         }}
       />
       <div className="sticky top-0 flex h-screen items-center overflow-hidden px-5 md:px-8">
@@ -72,34 +97,17 @@ export function StickyChapter({ chapter, index }: Props) {
                 </p>
 
                 <ul className="mt-8 flex flex-col gap-4">
-                  {chapter.outcomes.map((o, i) => {
-                    const start = i / totalOutcomes;
-                    const end = (i + 1) / totalOutcomes;
-                    const opacity = useTransform(
-                      scrollYProgress,
-                      [Math.max(0, start - 0.05), start + 0.05, end + 0.1, Math.min(1, end + 0.3)],
-                      [0.35, 1, 1, 0.55],
-                    );
-                    const x = useTransform(scrollYProgress, [start, start + 0.1], [-20, 0]);
-                    return (
-                      <motion.li key={i} style={{ opacity, x }} className="flex items-start gap-4">
-                        <span
-                          className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full"
-                          style={{ background: chapter.accent }}
-                        >
-                          <Check size={14} color="white" strokeWidth={3} />
-                        </span>
-                        <div>
-                          <div className="text-on-dark" style={{ fontSize: 19, fontWeight: 600, lineHeight: 1.3 }}>
-                            {o.title}
-                          </div>
-                          <div className="text-on-dark-muted" style={{ fontSize: 15, lineHeight: 1.5 }}>
-                            {o.desc}
-                          </div>
-                        </div>
-                      </motion.li>
-                    );
-                  })}
+                  {chapter.outcomes.map((o, i) => (
+                    <OutcomeRow
+                      key={i}
+                      i={i}
+                      total={totalOutcomes}
+                      progress={scrollYProgress}
+                      accent={chapter.accent}
+                      title={o.title}
+                      desc={o.desc}
+                    />
+                  ))}
                 </ul>
 
                 <div className="mt-8 flex flex-wrap gap-2">
