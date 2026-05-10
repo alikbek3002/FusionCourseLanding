@@ -21,7 +21,7 @@ export function Practice() {
         />
         <motion.div variants={fadeInUp}>
           <span
-            className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider"
+            className="mt-8 md:mt-10 max-w-xl text-on-dark-muted my-[20px]"
             style={{ background: "#3FDD78", color: "#0B1A12" }}
           >
             ПРАКТИКА

@@ -86,7 +86,7 @@ export function StickyChapter({ chapter, index }: Props) {
               </div>
               <div className="relative min-w-0">
                 <span
-                  className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider"
+                  className="mt-8 md:mt-10 max-w-xl text-on-dark-muted my-[20px]"
                   style={{ background: `${chapter.accent}26`, color: "#fff", border: `1px solid ${chapter.accent}66` }}
                 >
                   {chapter.pill}
