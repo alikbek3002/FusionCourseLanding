@@ -152,7 +152,7 @@ export function Hero() {
           </motion.h1>
 
           <p
-            className="mt-8 md:mt-10 max-w-xl text-on-dark-muted"
+            className="mt-8 md:mt-10 max-w-xl text-on-dark-muted my-[20px]"
             style={{ fontSize: "clamp(16px, 1.6vw, 20px)", lineHeight: 1.5 }}
           >
             14 уроков с @zholdoshev.ramis. Промпты, ИИ-агенты, контент и вайбкодинг.
