@@ -66,19 +66,25 @@ export function StickyChapter({ chapter, index }: Props) {
           opacity: glowOpacity,
         }}
       />
-      <div className="relative px-5 py-20 md:sticky md:top-0 md:flex md:h-screen md:items-center md:overflow-hidden md:py-0 md:px-8">
+      <div
+        className="relative py-20 md:sticky md:top-0 md:flex md:h-screen md:items-center md:overflow-hidden md:py-0"
+        style={{
+          paddingLeft: "max(20px, env(safe-area-inset-left))",
+          paddingRight: "max(20px, env(safe-area-inset-right))",
+        }}
+      >
         <div className={`relative z-10 mx-auto grid w-full max-w-[1280px] items-center gap-10 md:grid-cols-12 md:gap-14 ${mirror ? "" : ""}`}>
           {/* Text column */}
           <div className={`md:col-span-6 ${mirror ? "md:order-2" : ""}`}>
-            <div className="relative">
+            <div className="relative min-w-0">
               <div
                 aria-hidden
-                className="pointer-events-none absolute -top-12 -left-2 select-none text-[140px] font-bold leading-none md:text-[200px]"
+                className="pointer-events-none absolute -top-12 left-0 select-none text-[100px] font-bold leading-none sm:text-[140px] md:text-[200px]"
                 style={{ color: chapter.accent, opacity: 0.15 }}
               >
                 {chapter.num}
               </div>
-              <div className="relative">
+              <div className="relative min-w-0">
                 <span
                   className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider"
                   style={{ background: `${chapter.accent}26`, color: "#fff", border: `1px solid ${chapter.accent}66` }}
@@ -86,13 +92,13 @@ export function StickyChapter({ chapter, index }: Props) {
                   {chapter.pill}
                 </span>
                 <h2
-                  className="mt-5 text-on-dark"
+                  className="mt-5 text-on-dark break-words"
                   style={{ fontSize: "clamp(34px, 5vw, 64px)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.05 }}
                 >
                   {chapter.title}
                 </h2>
                 <p
-                  className="mt-5 text-on-dark-muted"
+                  className="mt-5 text-on-dark-muted break-words"
                   style={{ fontSize: "clamp(16px, 1.6vw, 19px)", lineHeight: 1.55, maxWidth: 520 }}
                 >
                   {chapter.lead}
@@ -123,18 +129,27 @@ export function StickyChapter({ chapter, index }: Props) {
 
           {/* Stories column */}
           <div className={`mt-12 md:mt-0 md:col-span-6 ${mirror ? "md:order-1" : ""}`}>
-            <div className="relative mx-auto h-[420px] w-full max-w-[520px] overflow-hidden md:h-[600px] md:overflow-visible">
+            <div className="relative mx-auto h-[420px] w-full max-w-[360px] overflow-hidden sm:max-w-[520px] md:h-[600px] md:overflow-visible">
               {chapter.stories.slice(0, 3).map((s, i) => {
                 const positions = [
-                  { left: "0%",   top: "0%",  rotate: -6, w: 220, z: 2 },
-                  { left: "38%",  top: "12%", rotate:  4, w: 240, z: 3 },
-                  { left: "12%",  top: "30%", rotate: -2, w: 210, z: 1 },
+                  { left: "2%",   top: "0%",  rotate: -6, w: 160, mdW: 220, z: 2 },
+                  { left: "42%",  top: "12%", rotate:  4, w: 170, mdW: 240, z: 3 },
+                  { left: "16%",  top: "32%", rotate: -2, w: 155, mdW: 210, z: 1 },
                 ];
                 const p = positions[i];
                 return (
                   <motion.div
                     key={i}
-                    style={{ y: ys[i], left: p.left, top: p.top, width: p.w, zIndex: p.z, position: "absolute" }}
+                    className="w-[var(--w-mobile)] sm:w-[var(--w-desktop)]"
+                    style={{
+                      ["--w-mobile" as any]: `${p.w}px`,
+                      ["--w-desktop" as any]: `${p.mdW}px`,
+                      y: ys[i],
+                      left: p.left,
+                      top: p.top,
+                      zIndex: p.z,
+                      position: "absolute",
+                    }}
                   >
                     <StorySlot type={s.type} label={s.label} src={s.src} rotate={p.rotate} />
                   </motion.div>
