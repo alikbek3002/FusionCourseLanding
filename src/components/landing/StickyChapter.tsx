@@ -54,8 +54,7 @@ export function StickyChapter({ chapter, index }: Props) {
     <section
       id={chapter.id}
       ref={ref}
-      className="relative"
-      style={{ height: "260vh" }}
+      className="relative md:[height:260vh]"
     >
       {/* Soft accent glow that pulses through the section */}
       <motion.div
@@ -67,7 +66,7 @@ export function StickyChapter({ chapter, index }: Props) {
           opacity: glowOpacity,
         }}
       />
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden px-5 md:px-8">
+      <div className="relative px-5 py-20 md:sticky md:top-0 md:flex md:h-screen md:items-center md:overflow-hidden md:py-0 md:px-8">
         <div className={`relative z-10 mx-auto grid w-full max-w-[1280px] items-center gap-10 md:grid-cols-12 md:gap-14 ${mirror ? "" : ""}`}>
           {/* Text column */}
           <div className={`md:col-span-6 ${mirror ? "md:order-2" : ""}`}>
@@ -123,8 +122,8 @@ export function StickyChapter({ chapter, index }: Props) {
           </div>
 
           {/* Stories column */}
-          <div className={`md:col-span-6 ${mirror ? "md:order-1" : ""}`}>
-            <div className="relative mx-auto h-[520px] w-full max-w-[520px] md:h-[600px]">
+          <div className={`mt-12 md:mt-0 md:col-span-6 ${mirror ? "md:order-1" : ""}`}>
+            <div className="relative mx-auto h-[420px] w-full max-w-[520px] md:h-[600px]">
               {chapter.stories.slice(0, 3).map((s, i) => {
                 const positions = [
                   { left: "0%",   top: "0%",  rotate: -6, w: 220, z: 2 },
