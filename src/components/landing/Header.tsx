@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { config } from "@/config";
 import { trackCTA } from "@/lib/analytics";
-import fusionMedium from "@/assets/brand/fusion-medium.png";
-import fusionMark from "@/assets/brand/fusion-mark.png";
 
 const links = [
   { href: "#program", label: "Программа" },
@@ -16,10 +14,9 @@ export function Header() {
   return (
     <header className="fixed left-0 right-0 top-0 z-40 border-b border-white/5 backdrop-blur-md" style={{ background: "rgba(14,12,21,0.6)" }}>
       <div className="mx-auto flex max-w-[1200px] items-center justify-between px-5 py-4 md:px-6">
-        <a href="#top" className="flex items-center gap-3 font-semibold tracking-tight">
-          <img src={fusionMark} alt="Fusion AI" className="hidden h-8 w-8 rounded-lg object-cover sm:block" />
-          <img src={fusionMedium} alt="Fusion" className="block h-7 sm:hidden" />
-          <span className="hidden text-on-dark-muted sm:inline">/ {config.COURSE_NAME}</span>
+        <a href="#top" className="flex items-center gap-2 font-bold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
+          <span className="text-gradient text-xl">ИИ</span>
+          <span className="text-on-dark text-xl">нутый</span>
         </a>
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
