@@ -10,14 +10,17 @@ type Props = { chapter: Chapter; index: number };
 function OutcomeRow({
   i, total, progress, accent, title, desc,
 }: { i: number; total: number; progress: MotionValue<number>; accent: string; title: string; desc: string }) {
-  const start = i / total;
-  const end = (i + 1) / total;
-  const opacity = useTransform(
-    progress,
-    [Math.max(0, start - 0.05), start + 0.05, end + 0.1, Math.min(1, end + 0.3)],
-    [0.35, 1, 1, 0.55],
-  );
-  const x = useTransform(progress, [start, start + 0.1], [-20, 0]);
+  const seg = 1 / total;
+  const start = i * seg;
+  const end = (i + 1) * seg;
+  const a = Math.max(0, start - seg * 0.2);
+  const b = Math.min(1, start + seg * 0.2);
+  const c = Math.min(1, end);
+  const d = 1;
+  // Ensure strictly non-decreasing
+  const stops = [a, Math.max(a, b), Math.max(a, b, c), Math.max(a, b, c, d)];
+  const opacity = useTransform(progress, stops, [0.35, 1, 1, 0.55]);
+  const x = useTransform(progress, [start, Math.min(1, start + 0.1)], [-20, 0]);
   return (
     <motion.li style={{ opacity, x }} className="flex items-start gap-4">
       <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full" style={{ background: accent }}>
