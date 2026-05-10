@@ -54,7 +54,7 @@ export function StickyChapter({ chapter, index }: Props) {
     <section
       id={chapter.id}
       ref={ref}
-      className="relative md:[height:260vh]"
+      className="relative overflow-hidden md:[height:260vh]"
     >
       {/* Soft accent glow that pulses through the section */}
       <motion.div
@@ -123,7 +123,7 @@ export function StickyChapter({ chapter, index }: Props) {
 
           {/* Stories column */}
           <div className={`mt-12 md:mt-0 md:col-span-6 ${mirror ? "md:order-1" : ""}`}>
-            <div className="relative mx-auto h-[420px] w-full max-w-[520px] md:h-[600px]">
+            <div className="relative mx-auto h-[420px] w-full max-w-[520px] overflow-hidden md:h-[600px] md:overflow-visible">
               {chapter.stories.slice(0, 3).map((s, i) => {
                 const positions = [
                   { left: "0%",   top: "0%",  rotate: -6, w: 220, z: 2 },
